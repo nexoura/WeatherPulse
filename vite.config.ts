@@ -6,7 +6,7 @@
 // You can pass additional config via defineConfig({ vite: { ... }, etc... }) if needed.
 import { defineConfig } from "@lovable.dev/vite-tanstack-config";
 
-if (process.env.VERCEL) {
+if (process.env.NODE_ENV === "production" || process.env.VERCEL) {
   delete process.env.LOVABLE_SANDBOX;
   delete process.env.DEV_SERVER__PROJECT_PATH;
 }
