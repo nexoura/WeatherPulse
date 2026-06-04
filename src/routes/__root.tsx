@@ -182,9 +182,9 @@ function RootComponent() {
         <div className="relative min-h-screen">
           <TopNav />
           <div className="mx-auto flex max-w-[1600px] justify-center gap-6 px-4">
-            {/* LEFT vertical skyscraper ad */}
+            {/* LEFT vertical skyscraper ad — replace slot with real AdSense Ad Unit ID from AdSense Dashboard > Ads > By ad unit */}
             <aside className="sticky top-20 hidden h-[620px] w-[160px] shrink-0 xl:block pt-6">
-              <AdVertical slot="1234567890" />
+              <AdVertical slot="REPLACE_WITH_REAL_SLOT_ID" />
             </aside>
 
             {/* Main Content */}
@@ -192,9 +192,9 @@ function RootComponent() {
               <Outlet />
             </main>
 
-            {/* RIGHT vertical skyscraper ad */}
+            {/* RIGHT vertical skyscraper ad — replace slot with real AdSense Ad Unit ID from AdSense Dashboard > Ads > By ad unit */}
             <aside className="sticky top-20 hidden h-[620px] w-[160px] shrink-0 xl:block pt-6">
-              <AdVertical slot="0987654321" />
+              <AdVertical slot="REPLACE_WITH_REAL_SLOT_ID" />
             </aside>
           </div>
           <MobileNav />

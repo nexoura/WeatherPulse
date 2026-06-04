@@ -251,7 +251,8 @@ function AQIPage() {
         </div>
       </GlassCard>
 
-      <AdBanner slot="aqi-inline-banner" />
+      {/* Replace slot with real numeric Ad Unit ID from AdSense Dashboard > Ads > By ad unit */}
+      <AdBanner slot="REPLACE_WITH_REAL_SLOT_ID" />
 
       {/* ── PM2.5 forecast chart ── */}
       {forecastSeries.length > 0 && (

@@ -111,7 +111,8 @@ function HomePage() {
         ) : (
           <>
             <HourlyStrip items={forecast.data.list} tz={tz} />
-            <AdBanner slot="home-inline-banner" />
+            {/* Replace slot with real numeric Ad Unit ID from AdSense Dashboard > Ads > By ad unit */}
+            <AdBanner slot="REPLACE_WITH_REAL_SLOT_ID" />
             <TempTrendChart items={forecast.data.list} tz={tz} units={units} />
           </>
         )}

@@ -113,7 +113,8 @@ function ForecastPage() {
         </div>
       </div>
 
-      <AdBanner slot="forecast-inline-banner" />
+      {/* Replace slot with real numeric Ad Unit ID from AdSense Dashboard > Ads > By ad unit */}
+      <AdBanner slot="REPLACE_WITH_REAL_SLOT_ID" />
 
       {/* ── Daily list ── */}
       <DailyList days={days} tz={tz} />
