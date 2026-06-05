@@ -1,6 +1,6 @@
 {
-  "name": "Atmos — Modern Weather Forecast",
-  "short_name": "Atmos",
+  "name": "WeatherPulse — Modern Weather Forecast",
+  "short_name": "WeatherPulse",
   "description": "Beautiful, real-time weather with forecast, air quality, and interactive maps.",
   "start_url": "/",
   "scope": "/",

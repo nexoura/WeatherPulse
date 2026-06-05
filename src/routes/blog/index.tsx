@@ -15,6 +15,29 @@ export const Route = createFileRoute("/blog/")({
           "Read our comprehensive weather guides, climate science breakdowns, and outdoor safety tips.",
       },
     ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          "itemListElement": [
+            {
+              "@type": "ListItem",
+              "position": 1,
+              "name": "Home",
+              "item": "https://theweatherpulse.in/",
+            },
+            {
+              "@type": "ListItem",
+              "position": 2,
+              "name": "Blog",
+              "item": "https://theweatherpulse.in/blog",
+            },
+          ],
+        }),
+      },
+    ],
   }),
   component: BlogIndexPage,
 });
@@ -95,7 +118,7 @@ function BlogIndexPage() {
                 {/* Thumbnail Image */}
                 <div className="relative aspect-video w-full overflow-hidden bg-foreground/5 border-b border-glass-border">
                   <img
-                    src={a.image}
+                    src={`${a.image.split("?")[0]}?w=600&auto=format&fit=crop&q=80&fm=webp`}
                     alt={a.title}
                     className="h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.03]"
                     loading="lazy"

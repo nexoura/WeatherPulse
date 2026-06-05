@@ -129,6 +129,33 @@ const LAYER_META: Record<TileLayerId, LayerMeta> = {
   },
 };
 
+function MapSkeleton() {
+  return (
+    <div className="h-[380px] sm:h-[460px] md:h-[560px] w-full rounded-2xl relative overflow-hidden bg-glass-strong/45 animate-pulse border border-glass-border">
+      {/* Zoom controls placeholder */}
+      <div className="absolute left-4 top-4 space-y-2">
+        <div className="h-8 w-8 rounded-lg bg-foreground/10 border border-glass-border" />
+        <div className="h-8 w-8 rounded-lg bg-foreground/10 border border-glass-border" />
+      </div>
+      {/* Location radar ping placeholder */}
+      <div className="absolute inset-0 flex items-center justify-center">
+        <div className="relative h-6 w-6">
+          <div className="absolute inset-0 rounded-full bg-cyan-500/25 animate-ping" />
+          <div className="absolute inset-1.5 rounded-full bg-cyan-400 shadow-[0_0_10px_rgba(34,211,238,0.7)]" />
+        </div>
+      </div>
+      {/* Base map grid simulation */}
+      <div className="absolute inset-0 grid grid-cols-4 grid-rows-4 opacity-10 pointer-events-none">
+        {Array.from({ length: 16 }).map((_, i) => (
+          <div key={i} className="border border-dashed border-foreground/30" />
+        ))}
+      </div>
+      {/* Layers controller placeholder */}
+      <div className="absolute right-4 top-4 h-8 w-8 rounded-lg bg-foreground/10 border border-glass-border" />
+    </div>
+  );
+}
+
 function MapsPage() {
   const active = useAppSelector((s) => s.location.active);
   const [layer, setLayer] = useState<TileLayerId>("precipitation_new");
@@ -249,15 +276,13 @@ function MapsPage() {
       </div>
 
       <GlassCard className="relative overflow-hidden p-2">
-        <Suspense
-          fallback={<Skeleton className="h-[380px] sm:h-[460px] md:h-[560px] w-full rounded-2xl" />}
-        >
+        <Suspense fallback={<MapSkeleton />}>
           {mounted ? (
             <div role="region" aria-label={`Interactive ${meta.legend.label.toLowerCase()} map`}>
               <WeatherMap lat={active.lat} lon={active.lon} layer={layer} />
             </div>
           ) : (
-            <Skeleton className="h-[380px] sm:h-[460px] md:h-[560px] w-full rounded-2xl" />
+            <MapSkeleton />
           )}
         </Suspense>
 

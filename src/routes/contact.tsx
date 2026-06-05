@@ -16,6 +16,29 @@ export const Route = createFileRoute("/contact")({
           "Get in touch with the WeatherPulse support team for feedback, questions, or partnerships.",
       },
     ],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "BreadcrumbList",
+          itemListElement: [
+            {
+              "@type": "ListItem",
+              position: 1,
+              name: "Home",
+              item: "https://theweatherpulse.in/",
+            },
+            {
+              "@type": "ListItem",
+              position: 2,
+              name: "Contact Us",
+              item: "https://theweatherpulse.in/contact",
+            },
+          ],
+        }),
+      },
+    ],
   }),
   component: ContactPage,
 });

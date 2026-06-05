@@ -1,11 +1,15 @@
 import { createFileRoute } from "@tanstack/react-router";
+import { globalLimiter, getClientIp } from "@/utils/rateLimiter";
 
 const BASE = "https://api.openweathermap.org/data/2.5";
 
 function bad(status: number, msg: string) {
   return new Response(JSON.stringify({ error: msg }), {
     status,
-    headers: { "Content-Type": "application/json" },
+    headers: { 
+      "Content-Type": "application/json",
+      "Cache-Control": "no-store, no-cache, must-revalidate"
+    },
   });
 }
 
@@ -13,6 +17,12 @@ export const Route = createFileRoute("/api/weather/forecast")({
   server: {
     handlers: {
       GET: async ({ request }) => {
+        // 1. IP-Based Rate Limiting
+        const ip = getClientIp(request);
+        if (globalLimiter.isRateLimited(ip)) {
+          return bad(429, "Too many requests. Please try again later.");
+        }
+
         const key = process.env.OPENWEATHER_API_KEY || "7685c07abaaee0b4b61c5599d66262f2";
 
         const url = new URL(request.url);
@@ -22,16 +32,31 @@ export const Route = createFileRoute("/api/weather/forecast")({
         if (!lat || !lon) return bad(400, "lat and lon are required");
 
         const upstream = `${BASE}/forecast?lat=${lat}&lon=${lon}&units=${units}&appid=${key}`;
-        const r = await fetch(upstream);
-        if (!r.ok) return bad(r.status, `OpenWeather error (${r.status})`);
-        const body = await r.text();
-        return new Response(body, {
-          status: 200,
-          headers: {
-            "Content-Type": "application/json",
-            "Cache-Control": "public, max-age=900",
-          },
-        });
+        
+        try {
+          const r = await fetch(upstream);
+          
+          // 2. Upstream Error Handling & Resiliency
+          if (!r.ok) {
+            if (r.status === 429) {
+              return bad(429, "Weather service is currently experiencing high load. Please try again soon.");
+            }
+            return bad(r.status, `OpenWeather error (${r.status})`);
+          }
+          
+          const body = await r.text();
+          
+          // 3. Vercel CDN Cache Configuration (30 mins stale-while-revalidate)
+          return new Response(body, {
+            status: 200,
+            headers: {
+              "Content-Type": "application/json",
+              "Cache-Control": "public, max-age=1800, s-maxage=1800, stale-while-revalidate=3600",
+            },
+          });
+        } catch (error: any) {
+          return bad(500, `Failed to contact upstream weather service: ${error?.message || error}`);
+        }
       },
     },
   },

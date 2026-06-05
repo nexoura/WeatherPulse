@@ -52,10 +52,6 @@ export function SearchCommand() {
   const useCurrent = async () => {
     const place = await geo.detect();
     if (place) {
-      if (place.country !== "IN") {
-        toast.error("WeatherPulse is restricted to locations within India only.");
-        return;
-      }
       pick(place);
     }
   };

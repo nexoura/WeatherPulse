@@ -15,13 +15,10 @@ export function WeatherMap({ lat, lon, layer }: { lat: number; lon: number; laye
 
   useEffect(() => {
     if (!ref.current || mapRef.current) return;
-    const indiaBounds = L.latLngBounds([6.5546, 68.1114], [35.6745, 97.3956]);
     const map = L.map(ref.current, {
       center: [lat, lon],
       zoom: 7,
-      minZoom: 4,
-      maxBounds: indiaBounds,
-      maxBoundsViscosity: 1.0,
+      minZoom: 2,
       zoomControl: true,
       attributionControl: false,
       worldCopyJump: true,

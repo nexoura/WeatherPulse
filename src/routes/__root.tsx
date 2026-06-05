@@ -125,6 +125,38 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         async: true,
         crossOrigin: "anonymous",
       },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          "name": "WeatherPulse",
+          "url": "https://theweatherpulse.in/",
+          "potentialAction": {
+            "@type": "SearchAction",
+            "target": {
+              "@type": "EntryPoint",
+              "urlTemplate": "https://theweatherpulse.in/?q={search_term_string}"
+            },
+            "query-input": "required name=search_term_string"
+          }
+        })
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          "name": "WeatherPulse",
+          "url": "https://theweatherpulse.in",
+          "logo": "https://theweatherpulse.in/icon-192.png",
+          "contactPoint": {
+            "@type": "ContactPoint",
+            "email": "support@theweatherpulse.in",
+            "contactType": "customer service"
+          }
+        })
+      }
     ],
   }),
   shellComponent: RootShell,
@@ -175,6 +207,19 @@ function RootComponent() {
     });
     return () => unsubscribe();
   }, [router]);
+
+  useEffect(() => {
+    if (typeof window !== "undefined" && "serviceWorker" in navigator) {
+      navigator.serviceWorker
+        .register("/sw.js")
+        .then((reg) => {
+          console.log("Service Worker registered with scope:", reg.scope);
+        })
+        .catch((err) => {
+          console.error("Service Worker registration failed:", err);
+        });
+    }
+  }, []);
 
   return (
     <ReduxProvider store={store}>

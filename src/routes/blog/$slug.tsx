@@ -14,12 +14,78 @@ export const Route = createFileRoute("/blog/$slug")({
     }
     return { article };
   },
-  head: ({ loaderData }) => ({
-    meta: [
-      { title: `${loaderData?.article?.title} — WeatherPulse` },
-      { name: "description", content: loaderData?.article?.excerpt },
-    ],
-  }),
+  head: ({ loaderData }) => {
+    const article = loaderData?.article;
+    return {
+      meta: [
+        { title: `${article?.title} — WeatherPulse` },
+        { name: "description", content: article?.excerpt },
+        { property: "og:title", content: `${article?.title} — WeatherPulse` },
+        { property: "og:description", content: article?.excerpt },
+        { property: "og:image", content: article?.image },
+        { property: "og:type", content: "article" },
+      ],
+      scripts: article
+        ? [
+            {
+              type: "application/ld+json",
+              children: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "BlogPosting",
+                headline: article.title,
+                description: article.excerpt,
+                image: article.image,
+                datePublished: new Date(article.date).toISOString().split("T")[0] + "T12:00:00+05:30",
+                author: {
+                  "@type": "Organization",
+                  name: "WeatherPulse Editorial",
+                  url: "https://theweatherpulse.in",
+                },
+                publisher: {
+                  "@type": "Organization",
+                  name: "WeatherPulse",
+                  logo: {
+                    "@type": "ImageObject",
+                    url: "https://theweatherpulse.in/icon-192.png",
+                  },
+                },
+                mainEntityOfPage: {
+                  "@type": "WebPage",
+                  "@id": `https://theweatherpulse.in/blog/${article.slug}`,
+                },
+              }),
+            },
+            {
+              type: "application/ld+json",
+              children: JSON.stringify({
+                "@context": "https://schema.org",
+                "@type": "BreadcrumbList",
+                "itemListElement": [
+                  {
+                    "@type": "ListItem",
+                    "position": 1,
+                    "name": "Home",
+                    "item": "https://theweatherpulse.in/",
+                  },
+                  {
+                    "@type": "ListItem",
+                    "position": 2,
+                    "name": "Blog",
+                    "item": "https://theweatherpulse.in/blog",
+                  },
+                  {
+                    "@type": "ListItem",
+                    "position": 3,
+                    "name": article.title,
+                    "item": `https://theweatherpulse.in/blog/${article.slug}`,
+                  },
+                ],
+              }),
+            },
+          ]
+        : [],
+    };
+  },
   component: BlogPostPage,
 });
 
@@ -77,7 +143,7 @@ function BlogPostPage() {
           {/* Banner Image */}
           <div className="aspect-[21/9] w-full overflow-hidden bg-foreground/5 border-b border-glass-border">
             <img
-              src={article.image}
+              src={`${article.image.split("?")[0]}?w=1200&auto=format&fit=crop&q=80&fm=webp`}
               alt={article.title}
               className="w-full h-full object-cover transition-transform duration-700 hover:scale-[1.01]"
             />
