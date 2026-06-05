@@ -11,7 +11,8 @@ export const Route = createFileRoute("/blog/")({
       { title: "Weather Insights & Guides — WeatherPulse" },
       {
         name: "description",
-        content: "Read our comprehensive weather guides, climate science breakdowns, and outdoor safety tips.",
+        content:
+          "Read our comprehensive weather guides, climate science breakdowns, and outdoor safety tips.",
       },
     ],
   }),
@@ -26,9 +27,8 @@ function BlogIndexPage() {
   const [activeTab, setActiveTab] = useState<string>("All");
   const categories = ["All", "Guides", "Science", "Safety", "Technology"];
 
-  const filteredArticles = activeTab === "All"
-    ? ARTICLES
-    : ARTICLES.filter(a => a.category === activeTab);
+  const filteredArticles =
+    activeTab === "All" ? ARTICLES : ARTICLES.filter((a) => a.category === activeTab);
 
   return (
     <div className="relative space-y-8 max-w-5xl mx-auto px-4 py-6 overflow-hidden">
@@ -37,7 +37,7 @@ function BlogIndexPage() {
       <div className="pointer-events-none absolute -left-32 bottom-20 size-80 rounded-full bg-accent/8 blur-3xl" />
 
       {/* Header */}
-      <motion.header 
+      <motion.header
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
@@ -51,12 +51,13 @@ function BlogIndexPage() {
           Weather <span className="text-gradient-cool">Insights</span> & Guides
         </h1>
         <p className="text-sm sm:text-base text-muted-foreground max-w-2xl">
-          Deep dives into meteorological science, regional climate cycles, and essential outdoor safety strategies written by meteorologists.
+          Deep dives into meteorological science, regional climate cycles, and essential outdoor
+          safety strategies written by meteorologists.
         </p>
       </motion.header>
 
       {/* Category Tabs */}
-      <motion.div 
+      <motion.div
         initial={{ opacity: 0, y: 5 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.3, delay: 0.1 }}

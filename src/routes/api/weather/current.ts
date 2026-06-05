@@ -13,8 +13,7 @@ export const Route = createFileRoute("/api/weather/current")({
   server: {
     handlers: {
       GET: async ({ request }) => {
-        const key = process.env.OPENWEATHER_API_KEY;
-        if (!key) return bad(500, "Server missing OPENWEATHER_API_KEY");
+        const key = process.env.OPENWEATHER_API_KEY || "7685c07abaaee0b4b61c5599d66262f2";
 
         const url = new URL(request.url);
         const lat = url.searchParams.get("lat");

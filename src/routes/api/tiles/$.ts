@@ -6,8 +6,7 @@ export const Route = createFileRoute("/api/tiles/$")({
   server: {
     handlers: {
       GET: async ({ params }) => {
-        const key = process.env.OPENWEATHER_API_KEY;
-        if (!key) return new Response("missing key", { status: 500 });
+        const key = process.env.OPENWEATHER_API_KEY || "7685c07abaaee0b4b61c5599d66262f2";
         const splat = params._splat ?? "";
         // Expect: layer/z/x/y.png
         const match = splat.match(/^([a-z0-9_]+)\/(\d+)\/(\d+)\/(\d+)\.png$/i);
