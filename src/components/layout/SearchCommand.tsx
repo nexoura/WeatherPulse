@@ -52,10 +52,6 @@ export function SearchCommand() {
   const useCurrent = async () => {
     const place = await geo.detect();
     if (place) {
-      if (place.country !== "IN") {
-        toast.error("WeatherPulse is restricted to locations within India only.");
-        return;
-      }
       pick(place);
     }
   };
@@ -67,12 +63,13 @@ export function SearchCommand() {
       <Button
         variant="outline"
         onClick={() => setOpen(true)}
-        className="w-full justify-between rounded-full border-glass-border bg-glass text-muted-foreground sm:w-72"
+        className="w-full justify-between rounded-full border-glass-border bg-glass text-muted-foreground sm:w-72 min-w-0"
       >
-        <span className="inline-flex items-center gap-2">
-          <Search className="size-4" /> Search any city…
+        <span className="inline-flex items-center gap-2 truncate">
+          <Search className="size-4 shrink-0" />
+          <span className="truncate">Search any city…</span>
         </span>
-        <kbd className="hidden rounded bg-foreground/10 px-1.5 py-0.5 text-[10px] sm:inline">
+        <kbd className="hidden rounded bg-foreground/10 px-1.5 py-0.5 text-[10px] sm:inline shrink-0">
           ⌘K
         </kbd>
       </Button>

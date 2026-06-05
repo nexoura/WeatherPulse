@@ -102,6 +102,12 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         href: "https://unpkg.com/leaflet@1.9.4/dist/leaflet.css",
         crossOrigin: "",
       },
+      { rel: "preconnect", href: "https://fonts.googleapis.com" },
+      { rel: "preconnect", href: "https://fonts.gstatic.com", crossOrigin: "anonymous" },
+      {
+        rel: "stylesheet",
+        href: "https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap",
+      },
       { rel: "manifest", href: "/manifest.webmanifest" },
       { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
       { rel: "icon", href: "/icon-192.png", type: "image/png" },
@@ -124,6 +130,38 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         src: "https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7862756622314744",
         async: true,
         crossOrigin: "anonymous",
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          name: "WeatherPulse",
+          url: "https://theweatherpulse.in/",
+          potentialAction: {
+            "@type": "SearchAction",
+            target: {
+              "@type": "EntryPoint",
+              urlTemplate: "https://theweatherpulse.in/?q={search_term_string}",
+            },
+            "query-input": "required name=search_term_string",
+          },
+        }),
+      },
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "Organization",
+          name: "WeatherPulse",
+          url: "https://theweatherpulse.in",
+          logo: "https://theweatherpulse.in/icon-192.png",
+          contactPoint: {
+            "@type": "ContactPoint",
+            email: "support@theweatherpulse.in",
+            contactType: "customer service",
+          },
+        }),
       },
     ],
   }),
@@ -176,6 +214,19 @@ function RootComponent() {
     return () => unsubscribe();
   }, [router]);
 
+  useEffect(() => {
+    if (typeof window !== "undefined" && "serviceWorker" in navigator) {
+      navigator.serviceWorker
+        .register("/sw.js")
+        .then((reg) => {
+          console.log("Service Worker registered with scope:", reg.scope);
+        })
+        .catch((err) => {
+          console.error("Service Worker registration failed:", err);
+        });
+    }
+  }, []);
+
   return (
     <ReduxProvider store={store}>
       <QueryClientProvider client={queryClient}>
@@ -190,8 +241,39 @@ function RootComponent() {
             </aside>
 
             {/* Main Content */}
-            <main className="flex-grow max-w-7xl pb-28 pt-6 md:pb-12 min-w-0">
-              <Outlet />
+            <main className="flex-grow max-w-7xl pb-28 pt-6 md:pb-12 min-w-0 flex flex-col justify-between">
+              <div>
+                <Outlet />
+              </div>
+              <footer className="mt-12 border-t border-glass-border pt-6 pb-6 text-center text-xs text-muted-foreground">
+                <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 mb-4 font-medium">
+                  <Link to="/about" className="hover:text-foreground transition-colors">
+                    About Us
+                  </Link>
+                  <Link to="/contact" className="hover:text-foreground transition-colors">
+                    Contact Us
+                  </Link>
+                  <Link to="/privacy" className="hover:text-foreground transition-colors">
+                    Privacy Policy
+                  </Link>
+                  <Link to="/terms" className="hover:text-foreground transition-colors">
+                    Terms & Conditions
+                  </Link>
+                  <Link to="/disclaimer" className="hover:text-foreground transition-colors">
+                    Disclaimer
+                  </Link>
+                  <Link to="/cookie-policy" className="hover:text-foreground transition-colors">
+                    Cookie Policy
+                  </Link>
+                  <Link to="/blog" className="hover:text-foreground transition-colors">
+                    Blog
+                  </Link>
+                </div>
+                <p>
+                  © 2026 WeatherPulse. All rights reserved. Meteorological data sourced from
+                  OpenWeatherMap.
+                </p>
+              </footer>
             </main>
 
             {/* RIGHT vertical skyscraper ad — replace slot with real AdSense Ad Unit ID from AdSense Dashboard > Ads > By ad unit */}

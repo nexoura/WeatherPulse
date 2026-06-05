@@ -86,7 +86,7 @@ export function HeroWeatherCard({
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, ease: "easeOut" }}
     >
-      <GlassCard strong className="relative isolate overflow-hidden p-6 sm:p-10 ring-glow">
+      <GlassCard strong className="relative isolate overflow-hidden p-4 sm:p-6 md:p-10 ring-glow">
         <div
           aria-hidden
           className="pointer-events-none absolute inset-0 -z-10 opacity-90"
@@ -111,7 +111,7 @@ export function HeroWeatherCard({
             <div className="mt-5 flex items-center gap-4">
               <div className="flex items-baseline gap-3">
                 <h1
-                  className={`${tone.tag} text-[5.5rem] font-bold leading-none tracking-tighter sm:text-[7.5rem]`}
+                  className={`${tone.tag} text-6xl font-bold leading-none tracking-tighter min-[380px]:text-[5.5rem] sm:text-[7.5rem]`}
                 >
                   {Math.round(data.main.temp)}°
                 </h1>
@@ -134,7 +134,7 @@ export function HeroWeatherCard({
           </div>
 
           {/* Center Column: Integrated Weather Stats */}
-          <div className="flex-1 min-w-[280px] max-w-lg lg:mx-8 xl:mx-16 my-auto">
+          <div className="flex-1 min-w-0 w-full md:min-w-[280px] max-w-lg lg:mx-8 xl:mx-16 my-auto">
             <div className="grid grid-cols-2 gap-x-6 gap-y-4 sm:grid-cols-3">
               {(
                 [

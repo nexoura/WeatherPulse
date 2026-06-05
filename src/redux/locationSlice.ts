@@ -39,9 +39,18 @@ const slice = createSlice({
     hydrateLocation(_state, action: PayloadAction<Partial<LocationState>>) {
       return { ...initialState, ...action.payload };
     },
+    reorderFavorites(state, action: PayloadAction<SavedCity[]>) {
+      state.favorites = action.payload;
+    },
   },
 });
 
-export const { setActive, addFavorite, removeFavorite, clearRecent, hydrateLocation } =
-  slice.actions;
+export const {
+  setActive,
+  addFavorite,
+  removeFavorite,
+  clearRecent,
+  hydrateLocation,
+  reorderFavorites,
+} = slice.actions;
 export const locationReducer = slice.reducer;
