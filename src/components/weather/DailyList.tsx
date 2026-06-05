@@ -65,7 +65,7 @@ export function DailyList({ days, tz }: { days: DailyAggregate[]; tz: number }) 
               </span>
 
               {/* Temp range bar */}
-              <div className="relative flex-1 h-2 rounded-full bg-foreground/8">
+              <div className="relative flex-1 h-2 rounded-full bg-foreground/8 hidden sm:block">
                 <div
                   className="absolute h-2 rounded-full"
                   style={{
@@ -75,6 +75,9 @@ export function DailyList({ days, tz }: { days: DailyAggregate[]; tz: number }) 
                   }}
                 />
               </div>
+
+              {/* Spacer on mobile to push temps to the right */}
+              <div className="flex-grow sm:hidden" />
 
               {/* Max temp */}
               <span className="w-10 shrink-0 text-right text-sm font-bold">

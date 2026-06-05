@@ -51,6 +51,7 @@ export function TopNav() {
               <Link
                 key={l.to}
                 to={l.to}
+                title={l.label}
                 className={cn(
                   "inline-flex items-center gap-1.5 rounded-full px-3 py-1.5 text-sm transition-colors",
                   active
@@ -59,7 +60,7 @@ export function TopNav() {
                 )}
               >
                 <Icon className="size-4" />
-                {l.label}
+                <span className="hidden lg:inline">{l.label}</span>
               </Link>
             );
           })}

@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { createFileRoute } from "@tanstack/react-router";
 import { tilesLimiter, getClientIp } from "@/utils/rateLimiter";
 
@@ -10,9 +11,9 @@ export const Route = createFileRoute("/api/tiles/$")({
         // 1. IP-Based Rate Limiting for Tiles (higher threshold: 300/min)
         const ip = getClientIp(request);
         if (tilesLimiter.isRateLimited(ip)) {
-          return new Response("Too many requests", { 
+          return new Response("Too many requests", {
             status: 429,
-            headers: { "Cache-Control": "no-store, no-cache, must-revalidate" }
+            headers: { "Cache-Control": "no-store, no-cache, must-revalidate" },
           });
         }
 
@@ -23,26 +24,27 @@ export const Route = createFileRoute("/api/tiles/$")({
         if (!match) return new Response("bad path", { status: 400 });
         const [, layer, z, x, y] = match;
         const upstream = `https://tile.openweathermap.org/map/${layer}/${z}/${x}/${y}.png?appid=${key}`;
-        
+
         try {
           const r = await fetch(upstream);
-          
+
           // 2. Upstream Error Handling
           if (!r.ok) {
-            return new Response(`upstream error (${r.status})`, { 
+            return new Response(`upstream error (${r.status})`, {
               status: r.status,
-              headers: { "Cache-Control": "no-store, no-cache, must-revalidate" }
+              headers: { "Cache-Control": "no-store, no-cache, must-revalidate" },
             });
           }
-          
+
           const buf = await r.arrayBuffer();
-          
+
           // 3. Vercel CDN Cache Configuration (1 hour stale-while-revalidate)
           return new Response(buf, {
             status: 200,
             headers: {
               "Content-Type": "image/png",
-              "Cache-Control": "public, max-age=3600, s-maxage=3600, stale-while-revalidate=7200, immutable",
+              "Cache-Control":
+                "public, max-age=3600, s-maxage=3600, stale-while-revalidate=7200, immutable",
             },
           });
         } catch (error: any) {
