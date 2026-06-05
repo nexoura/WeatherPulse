@@ -130,33 +130,33 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "WebSite",
-          "name": "WeatherPulse",
-          "url": "https://theweatherpulse.in/",
-          "potentialAction": {
+          name: "WeatherPulse",
+          url: "https://theweatherpulse.in/",
+          potentialAction: {
             "@type": "SearchAction",
-            "target": {
+            target: {
               "@type": "EntryPoint",
-              "urlTemplate": "https://theweatherpulse.in/?q={search_term_string}"
+              urlTemplate: "https://theweatherpulse.in/?q={search_term_string}",
             },
-            "query-input": "required name=search_term_string"
-          }
-        })
+            "query-input": "required name=search_term_string",
+          },
+        }),
       },
       {
         type: "application/ld+json",
         children: JSON.stringify({
           "@context": "https://schema.org",
           "@type": "Organization",
-          "name": "WeatherPulse",
-          "url": "https://theweatherpulse.in",
-          "logo": "https://theweatherpulse.in/icon-192.png",
-          "contactPoint": {
+          name: "WeatherPulse",
+          url: "https://theweatherpulse.in",
+          logo: "https://theweatherpulse.in/icon-192.png",
+          contactPoint: {
             "@type": "ContactPoint",
-            "email": "support@theweatherpulse.in",
-            "contactType": "customer service"
-          }
-        })
-      }
+            email: "support@theweatherpulse.in",
+            contactType: "customer service",
+          },
+        }),
+      },
     ],
   }),
   shellComponent: RootShell,
