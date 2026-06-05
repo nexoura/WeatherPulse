@@ -29,7 +29,7 @@ function AboutPage() {
       <div className="pointer-events-none absolute -left-32 bottom-20 size-80 rounded-full bg-accent/8 blur-3xl" />
 
       {/* Header */}
-      <motion.header 
+      <motion.header
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
@@ -43,7 +43,8 @@ function AboutPage() {
           About <span className="text-gradient-cool">WeatherPulse</span>
         </h1>
         <p className="text-sm sm:text-base text-muted-foreground max-w-xl">
-          An elegant, clean weather platform offering real-time forecasts and visual overlays with zero clutter.
+          An elegant, clean weather platform offering real-time forecasts and visual overlays with
+          zero clutter.
         </p>
       </motion.header>
 
@@ -53,7 +54,10 @@ function AboutPage() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4, delay: 0.1 }}
       >
-        <GlassCard strong className="relative overflow-hidden p-6 md:p-8 space-y-4 border border-white/10 shadow-xl">
+        <GlassCard
+          strong
+          className="relative overflow-hidden p-6 md:p-8 space-y-4 border border-white/10 shadow-xl"
+        >
           <div className="absolute left-0 top-0 bottom-0 w-1.5 bg-gradient-to-b from-primary to-accent" />
           <div className="flex items-center gap-3">
             <span className="flex size-10 items-center justify-center rounded-xl bg-primary/15 text-primary">
@@ -62,10 +66,15 @@ function AboutPage() {
             <h2 className="text-xl font-bold tracking-tight text-foreground">Our Mission</h2>
           </div>
           <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-            WeatherPulse was founded to solve a common problem: weather apps are often cluttered with invasive popups, confusing tables, and unnecessary fluff. We believe checking the weather should be an elegant, distraction-free experience. 
+            WeatherPulse was founded to solve a common problem: weather apps are often cluttered
+            with invasive popups, confusing tables, and unnecessary fluff. We believe checking the
+            weather should be an elegant, distraction-free experience.
           </p>
           <p className="text-sm sm:text-base text-muted-foreground leading-relaxed">
-            By combining a state-of-the-art glassmorphic design system with highly precise meteorological calculations, we deliver essential data (hourly trends, active alerts, AQI indicators, and interactive overlays) in a layout that feels both clean and visually premium.
+            By combining a state-of-the-art glassmorphic design system with highly precise
+            meteorological calculations, we deliver essential data (hourly trends, active alerts,
+            AQI indicators, and interactive overlays) in a layout that feels both clean and visually
+            premium.
           </p>
         </GlassCard>
       </motion.div>
@@ -112,12 +121,16 @@ function AboutPage() {
                 whileHover={{ y: -4, transition: { duration: 0.15 } }}
               >
                 <GlassCard className="h-full p-5 flex gap-4 border border-white/6 hover:border-white/12 transition-all shadow-md">
-                  <span className={`flex size-10 shrink-0 items-center justify-center rounded-xl ${f.color}`}>
+                  <span
+                    className={`flex size-10 shrink-0 items-center justify-center rounded-xl ${f.color}`}
+                  >
                     <Icon className="size-5" />
                   </span>
                   <div className="space-y-1">
                     <h3 className="font-bold text-sm sm:text-base text-foreground">{f.title}</h3>
-                    <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">{f.desc}</p>
+                    <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
+                      {f.desc}
+                    </p>
                   </div>
                 </GlassCard>
               </motion.div>
@@ -137,28 +150,41 @@ function AboutPage() {
             <span className="flex size-10 items-center justify-center rounded-xl bg-accent/15 text-accent">
               <Server className="size-5" />
             </span>
-            <h2 className="text-xl font-bold tracking-tight text-foreground">Data Sources & Tech Stack</h2>
+            <h2 className="text-xl font-bold tracking-tight text-foreground">
+              Data Sources & Tech Stack
+            </h2>
           </div>
           <p className="text-sm text-muted-foreground leading-relaxed">
-            To ensure reliable predictions, we aggregate meteorological data using verified feeds and perform client-side optimizations:
+            To ensure reliable predictions, we aggregate meteorological data using verified feeds
+            and perform client-side optimizations:
           </p>
           <div className="space-y-3 pl-2 border-l-2 border-primary/20">
             <div className="space-y-1">
-              <h4 className="text-xs font-bold uppercase tracking-wider text-primary">OpenWeather Integration</h4>
+              <h4 className="text-xs font-bold uppercase tracking-wider text-primary">
+                OpenWeather Integration
+              </h4>
               <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                We pull active forecasts, hourly temperature maps, and atmospheric pressure trends through the OpenWeatherMap API, standardizing units dynamically.
+                We pull active forecasts, hourly temperature maps, and atmospheric pressure trends
+                through the OpenWeatherMap API, standardizing units dynamically.
               </p>
             </div>
             <div className="space-y-1">
-              <h4 className="text-xs font-bold uppercase tracking-wider text-primary">Dynamic Aggregation</h4>
+              <h4 className="text-xs font-bold uppercase tracking-wider text-primary">
+                Dynamic Aggregation
+              </h4>
               <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                Multi-day trends are calculated by parsing three-hour intervals, utilizing weighted moving averages to filter out transient spikes in humidity and temperature.
+                Multi-day trends are calculated by parsing three-hour intervals, utilizing weighted
+                moving averages to filter out transient spikes in humidity and temperature.
               </p>
             </div>
             <div className="space-y-1">
-              <h4 className="text-xs font-bold uppercase tracking-wider text-primary">Engineering Stack</h4>
+              <h4 className="text-xs font-bold uppercase tracking-wider text-primary">
+                Engineering Stack
+              </h4>
               <p className="text-xs sm:text-sm text-muted-foreground leading-relaxed">
-                Built as a Server-Side Rendered (SSR) app using React 19, TypeScript, TanStack Start, Redux Toolkit, and Tailwind CSS. Map overlays are rendered dynamically using Leaflet.js.
+                Built as a Server-Side Rendered (SSR) app using React 19, TypeScript, TanStack
+                Start, Redux Toolkit, and Tailwind CSS. Map overlays are rendered dynamically using
+                Leaflet.js.
               </p>
             </div>
           </div>
@@ -178,13 +204,14 @@ function AboutPage() {
               Need Support or Have Feedback?
             </h3>
             <p className="text-xs sm:text-sm text-muted-foreground">
-              We respond to all support requests and corporate partnership inquiries within 24 hours.
+              We respond to all support requests and corporate partnership inquiries within 24
+              hours.
             </p>
           </div>
-          <motion.a 
+          <motion.a
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.98 }}
-            href="/contact" 
+            href="/contact"
             className="rounded-full bg-foreground text-background px-6 py-2 text-xs sm:text-sm font-semibold shadow-md hover:bg-foreground/90 transition-colors shrink-0 text-center"
           >
             Contact Support

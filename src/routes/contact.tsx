@@ -54,7 +54,7 @@ function ContactPage() {
       <div className="pointer-events-none absolute -right-32 bottom-20 size-80 rounded-full bg-primary/10 blur-3xl" />
 
       {/* Header */}
-      <motion.header 
+      <motion.header
         initial={{ opacity: 0, y: -10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.4 }}
@@ -85,7 +85,9 @@ function ContactPage() {
             <div className="space-y-2">
               <h2 className="text-2xl font-bold text-foreground">Message Sent Successfully!</h2>
               <p className="text-sm text-muted-foreground max-w-sm mx-auto leading-relaxed">
-                Thank you for reaching out. Our support team will review your message and get back to you at <span className="font-semibold text-foreground">{email}</span> within 24 hours.
+                Thank you for reaching out. Our support team will review your message and get back
+                to you at <span className="font-semibold text-foreground">{email}</span> within 24
+                hours.
               </p>
             </div>
             <Button
@@ -217,7 +219,9 @@ function ContactPage() {
                 >
                   <GlassCard className="p-5 flex flex-col items-start gap-3 justify-between h-full border border-white/6 hover:border-white/12 transition-all shadow-md">
                     <div className="flex items-center gap-2.5">
-                      <span className={`flex size-8 items-center justify-center rounded-lg ${card.color}`}>
+                      <span
+                        className={`flex size-8 items-center justify-center rounded-lg ${card.color}`}
+                      >
                         <Icon className="size-4" />
                       </span>
                       <h3 className="font-bold text-xs sm:text-sm text-foreground">{card.title}</h3>
@@ -226,9 +230,7 @@ function ContactPage() {
                       <p className="text-xs text-foreground font-semibold tracking-tight leading-none">
                         {card.value}
                       </p>
-                      <p className="text-[10px] text-muted-foreground font-medium">
-                        {card.sub}
-                      </p>
+                      <p className="text-[10px] text-muted-foreground font-medium">{card.sub}</p>
                     </div>
                   </GlassCard>
                 </motion.div>
