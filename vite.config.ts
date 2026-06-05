@@ -20,4 +20,12 @@ export default defineConfig({
   nitro: {
     preset: "vercel",
   },
+  vite: {
+    build: {
+      // Raise warning threshold to 1 MB to suppress Vercel chunk size warnings.
+      // manualChunks is intentionally omitted — TanStack Start / Nitro externalizes
+      // react, react-dom and framework libs itself; re-declaring them here causes a build error.
+      chunkSizeWarningLimit: 1000,
+    },
+  },
 });
