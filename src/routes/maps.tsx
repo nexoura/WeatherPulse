@@ -249,13 +249,15 @@ function MapsPage() {
       </div>
 
       <GlassCard className="relative overflow-hidden p-2">
-        <Suspense fallback={<Skeleton className="h-[560px] w-full rounded-2xl" />}>
+        <Suspense
+          fallback={<Skeleton className="h-[380px] sm:h-[460px] md:h-[560px] w-full rounded-2xl" />}
+        >
           {mounted ? (
             <div role="region" aria-label={`Interactive ${meta.legend.label.toLowerCase()} map`}>
               <WeatherMap lat={active.lat} lon={active.lon} layer={layer} />
             </div>
           ) : (
-            <Skeleton className="h-[560px] w-full rounded-2xl" />
+            <Skeleton className="h-[380px] sm:h-[460px] md:h-[560px] w-full rounded-2xl" />
           )}
         </Suspense>
 

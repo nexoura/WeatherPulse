@@ -155,7 +155,7 @@ function AQIPage() {
           style={{ background: scale.color }}
         />
 
-        <div className="relative flex flex-col gap-0 lg:flex-row lg:items-stretch lg:divide-x lg:divide-glass-border">
+        <div className="relative flex flex-col gap-0 divide-y divide-glass-border lg:flex-row lg:items-stretch lg:divide-y-0 lg:divide-x lg:divide-glass-border">
           {/* ── LEFT: AQI badge + info ── */}
           <div className="flex shrink-0 flex-col justify-center p-6 sm:p-8 lg:w-72">
             <div className="text-[10px] font-bold uppercase tracking-[0.18em] text-muted-foreground mb-3">
@@ -186,7 +186,7 @@ function AQIPage() {
             <p className="mb-3 text-[10px] font-bold uppercase tracking-[0.14em] text-muted-foreground">
               Pollutant Breakdown
             </p>
-            <div className="grid grid-cols-3 gap-2.5">
+            <div className="grid grid-cols-2 sm:grid-cols-3 gap-2.5">
               {POLLUTANTS.map((p, i) => (
                 <MiniPollutant
                   key={p.label}

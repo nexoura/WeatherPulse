@@ -108,15 +108,20 @@ export function HeroWeatherCard({
               <span className="text-muted-foreground">{dateLabel}</span>
             </div>
 
-            <div className="mt-5 flex items-baseline gap-3">
-              <h1
-                className={`${tone.tag} text-[5.5rem] font-bold leading-none tracking-tighter sm:text-[7.5rem]`}
-              >
-                {Math.round(data.main.temp)}°
-              </h1>
-              <span className="text-2xl font-light text-muted-foreground">
-                {units === "metric" ? "C" : "F"}
-              </span>
+            <div className="mt-5 flex items-center gap-4">
+              <div className="flex items-baseline gap-3">
+                <h1
+                  className={`${tone.tag} text-[5.5rem] font-bold leading-none tracking-tighter sm:text-[7.5rem]`}
+                >
+                  {Math.round(data.main.temp)}°
+                </h1>
+                <span className="text-2xl font-light text-muted-foreground">
+                  {units === "metric" ? "C" : "F"}
+                </span>
+              </div>
+              <div className="md:hidden animate-floaty shrink-0">
+                <WeatherIcon icon={w.icon} size={80} alt={w.description} />
+              </div>
             </div>
 
             <p className="mt-2 text-lg font-medium capitalize text-foreground/90">
@@ -247,7 +252,7 @@ export function HeroWeatherCard({
             </div>
           </div>
 
-          <div className="flex flex-col items-end gap-3">
+          <div className="flex flex-col items-end gap-3 ml-auto md:ml-0">
             <div className="flex gap-2">
               <Button
                 variant="ghost"
@@ -264,16 +269,16 @@ export function HeroWeatherCard({
                 className="bg-foreground/10 backdrop-blur hover:bg-foreground/20"
               />
             </div>
-            <div className="animate-floaty">
+            <div className="hidden md:block animate-floaty">
               <WeatherIcon icon={w.icon} size={160} alt={w.description} />
             </div>
           </div>
         </div>
 
         <div className="mt-6 border-t border-glass-border pt-4">
-          <div className="flex items-start gap-6">
+          <div className="flex flex-col md:flex-row md:items-start gap-6">
             {/* LEFT: Sunrise + Sunset stacked vertically */}
-            <div className="flex flex-col gap-2.5">
+            <div className="flex flex-col sm:flex-row md:flex-col gap-4 sm:gap-8 md:gap-2.5">
               <div className="inline-flex items-center gap-2 text-sm">
                 <span className="inline-flex size-8 items-center justify-center rounded-full bg-aqi-fair/20 text-aqi-fair">
                   <Sunrise className="size-4" />
@@ -292,12 +297,12 @@ export function HeroWeatherCard({
 
             {/* Divider */}
             {advisories && advisories.length > 0 && (
-              <div className="self-stretch w-px bg-glass-border shrink-0" />
+              <div className="hidden md:block self-stretch w-px bg-glass-border shrink-0" />
             )}
 
             {/* RIGHT: Advisory boxes stacked vertically — pushed to far right */}
             {advisories && advisories.length > 0 && (
-              <div className="flex flex-col gap-2 ml-auto">
+              <div className="flex flex-col gap-2 md:ml-auto w-full md:w-auto">
                 {advisories.map((a, i) => {
                   const isDanger = a.level === "danger";
                   const borderColor = isDanger ? "var(--destructive)" : "#f59e0b";

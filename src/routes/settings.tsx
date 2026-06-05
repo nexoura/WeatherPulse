@@ -36,7 +36,7 @@ function SettingsPage() {
 
       <GlassCard className="p-6">
         <h2 className="mb-3 text-sm uppercase tracking-wider text-muted-foreground">Units</h2>
-        <div className="flex gap-2">
+        <div className="flex flex-col sm:flex-row gap-2">
           {(["metric", "imperial"] as const).map((u) => (
             <Button
               key={u}

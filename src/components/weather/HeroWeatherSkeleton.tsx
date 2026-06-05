@@ -15,21 +15,24 @@ export function HeroWeatherSkeleton() {
             <Skeleton className="h-5 w-28" />
           </div>
 
-          <div className="mt-5 flex items-baseline gap-3">
-            <Skeleton className="h-20 w-28 sm:h-28 sm:w-40" />
-            <Skeleton className="h-8 w-8" />
+          <div className="mt-5 flex items-center gap-4">
+            <div className="flex items-baseline gap-3">
+              <Skeleton className="h-20 w-28 sm:h-28 sm:w-40" />
+              <Skeleton className="h-8 w-8" />
+            </div>
+            <Skeleton className="size-16 rounded-full md:hidden shrink-0" />
           </div>
 
           <Skeleton className="mt-2 h-6 w-48" />
           <Skeleton className="mt-1 h-4 w-64" />
         </div>
 
-        <div className="flex flex-col items-end gap-3">
+        <div className="flex flex-col items-end gap-3 ml-auto md:ml-0">
           <div className="flex gap-2">
             <Skeleton className="size-10 rounded-lg" />
             <Skeleton className="size-10 rounded-lg" />
           </div>
-          <Skeleton className="size-28 rounded-full sm:size-40" />
+          <Skeleton className="size-28 rounded-full sm:size-40 hidden md:block" />
         </div>
       </div>
 

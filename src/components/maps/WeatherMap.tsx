@@ -126,7 +126,7 @@ export function WeatherMap({ lat, lon, layer }: { lat: number; lon: number; laye
   return (
     <div
       ref={ref}
-      className="h-[560px] w-full overflow-hidden rounded-2xl"
+      className="h-[380px] sm:h-[460px] md:h-[560px] w-full overflow-hidden rounded-2xl"
       style={{ background: theme === "dark" ? "#0b1220" : "#f1f5f9" }}
     />
   );
