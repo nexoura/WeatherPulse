@@ -9,12 +9,20 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as TermsRouteImport } from './routes/terms'
 import { Route as SettingsRouteImport } from './routes/settings'
 import { Route as SavedRouteImport } from './routes/saved'
+import { Route as PrivacyRouteImport } from './routes/privacy'
 import { Route as MapsRouteImport } from './routes/maps'
 import { Route as ForecastRouteImport } from './routes/forecast'
+import { Route as DisclaimerRouteImport } from './routes/disclaimer'
+import { Route as CookiePolicyRouteImport } from './routes/cookie-policy'
+import { Route as ContactRouteImport } from './routes/contact'
 import { Route as AirQualityRouteImport } from './routes/air-quality'
+import { Route as AboutRouteImport } from './routes/about'
 import { Route as IndexRouteImport } from './routes/index'
+import { Route as BlogIndexRouteImport } from './routes/blog/index'
+import { Route as BlogSlugRouteImport } from './routes/blog/$slug'
 import { Route as ApiWeatherForecastRouteImport } from './routes/api/weather/forecast'
 import { Route as ApiWeatherCurrentRouteImport } from './routes/api/weather/current'
 import { Route as ApiWeatherAirRouteImport } from './routes/api/weather/air'
@@ -22,6 +30,11 @@ import { Route as ApiTilesSplatRouteImport } from './routes/api/tiles/$'
 import { Route as ApiGeoSearchRouteImport } from './routes/api/geo/search'
 import { Route as ApiGeoReverseRouteImport } from './routes/api/geo/reverse'
 
+const TermsRoute = TermsRouteImport.update({
+  id: '/terms',
+  path: '/terms',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const SettingsRoute = SettingsRouteImport.update({
   id: '/settings',
   path: '/settings',
@@ -30,6 +43,11 @@ const SettingsRoute = SettingsRouteImport.update({
 const SavedRoute = SavedRouteImport.update({
   id: '/saved',
   path: '/saved',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const PrivacyRoute = PrivacyRouteImport.update({
+  id: '/privacy',
+  path: '/privacy',
   getParentRoute: () => rootRouteImport,
 } as any)
 const MapsRoute = MapsRouteImport.update({
@@ -42,14 +60,44 @@ const ForecastRoute = ForecastRouteImport.update({
   path: '/forecast',
   getParentRoute: () => rootRouteImport,
 } as any)
+const DisclaimerRoute = DisclaimerRouteImport.update({
+  id: '/disclaimer',
+  path: '/disclaimer',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const CookiePolicyRoute = CookiePolicyRouteImport.update({
+  id: '/cookie-policy',
+  path: '/cookie-policy',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const ContactRoute = ContactRouteImport.update({
+  id: '/contact',
+  path: '/contact',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const AirQualityRoute = AirQualityRouteImport.update({
   id: '/air-quality',
   path: '/air-quality',
   getParentRoute: () => rootRouteImport,
 } as any)
+const AboutRoute = AboutRouteImport.update({
+  id: '/about',
+  path: '/about',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogIndexRoute = BlogIndexRouteImport.update({
+  id: '/blog/',
+  path: '/blog/',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const BlogSlugRoute = BlogSlugRouteImport.update({
+  id: '/blog/$slug',
+  path: '/blog/$slug',
   getParentRoute: () => rootRouteImport,
 } as any)
 const ApiWeatherForecastRoute = ApiWeatherForecastRouteImport.update({
@@ -85,11 +133,19 @@ const ApiGeoReverseRoute = ApiGeoReverseRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/air-quality': typeof AirQualityRoute
+  '/contact': typeof ContactRoute
+  '/cookie-policy': typeof CookiePolicyRoute
+  '/disclaimer': typeof DisclaimerRoute
   '/forecast': typeof ForecastRoute
   '/maps': typeof MapsRoute
+  '/privacy': typeof PrivacyRoute
   '/saved': typeof SavedRoute
   '/settings': typeof SettingsRoute
+  '/terms': typeof TermsRoute
+  '/blog/$slug': typeof BlogSlugRoute
+  '/blog/': typeof BlogIndexRoute
   '/api/geo/reverse': typeof ApiGeoReverseRoute
   '/api/geo/search': typeof ApiGeoSearchRoute
   '/api/tiles/$': typeof ApiTilesSplatRoute
@@ -99,11 +155,19 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/air-quality': typeof AirQualityRoute
+  '/contact': typeof ContactRoute
+  '/cookie-policy': typeof CookiePolicyRoute
+  '/disclaimer': typeof DisclaimerRoute
   '/forecast': typeof ForecastRoute
   '/maps': typeof MapsRoute
+  '/privacy': typeof PrivacyRoute
   '/saved': typeof SavedRoute
   '/settings': typeof SettingsRoute
+  '/terms': typeof TermsRoute
+  '/blog/$slug': typeof BlogSlugRoute
+  '/blog': typeof BlogIndexRoute
   '/api/geo/reverse': typeof ApiGeoReverseRoute
   '/api/geo/search': typeof ApiGeoSearchRoute
   '/api/tiles/$': typeof ApiTilesSplatRoute
@@ -114,11 +178,19 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/about': typeof AboutRoute
   '/air-quality': typeof AirQualityRoute
+  '/contact': typeof ContactRoute
+  '/cookie-policy': typeof CookiePolicyRoute
+  '/disclaimer': typeof DisclaimerRoute
   '/forecast': typeof ForecastRoute
   '/maps': typeof MapsRoute
+  '/privacy': typeof PrivacyRoute
   '/saved': typeof SavedRoute
   '/settings': typeof SettingsRoute
+  '/terms': typeof TermsRoute
+  '/blog/$slug': typeof BlogSlugRoute
+  '/blog/': typeof BlogIndexRoute
   '/api/geo/reverse': typeof ApiGeoReverseRoute
   '/api/geo/search': typeof ApiGeoSearchRoute
   '/api/tiles/$': typeof ApiTilesSplatRoute
@@ -130,11 +202,19 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/about'
     | '/air-quality'
+    | '/contact'
+    | '/cookie-policy'
+    | '/disclaimer'
     | '/forecast'
     | '/maps'
+    | '/privacy'
     | '/saved'
     | '/settings'
+    | '/terms'
+    | '/blog/$slug'
+    | '/blog/'
     | '/api/geo/reverse'
     | '/api/geo/search'
     | '/api/tiles/$'
@@ -144,11 +224,19 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/about'
     | '/air-quality'
+    | '/contact'
+    | '/cookie-policy'
+    | '/disclaimer'
     | '/forecast'
     | '/maps'
+    | '/privacy'
     | '/saved'
     | '/settings'
+    | '/terms'
+    | '/blog/$slug'
+    | '/blog'
     | '/api/geo/reverse'
     | '/api/geo/search'
     | '/api/tiles/$'
@@ -158,11 +246,19 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/about'
     | '/air-quality'
+    | '/contact'
+    | '/cookie-policy'
+    | '/disclaimer'
     | '/forecast'
     | '/maps'
+    | '/privacy'
     | '/saved'
     | '/settings'
+    | '/terms'
+    | '/blog/$slug'
+    | '/blog/'
     | '/api/geo/reverse'
     | '/api/geo/search'
     | '/api/tiles/$'
@@ -173,11 +269,19 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AboutRoute: typeof AboutRoute
   AirQualityRoute: typeof AirQualityRoute
+  ContactRoute: typeof ContactRoute
+  CookiePolicyRoute: typeof CookiePolicyRoute
+  DisclaimerRoute: typeof DisclaimerRoute
   ForecastRoute: typeof ForecastRoute
   MapsRoute: typeof MapsRoute
+  PrivacyRoute: typeof PrivacyRoute
   SavedRoute: typeof SavedRoute
   SettingsRoute: typeof SettingsRoute
+  TermsRoute: typeof TermsRoute
+  BlogSlugRoute: typeof BlogSlugRoute
+  BlogIndexRoute: typeof BlogIndexRoute
   ApiGeoReverseRoute: typeof ApiGeoReverseRoute
   ApiGeoSearchRoute: typeof ApiGeoSearchRoute
   ApiTilesSplatRoute: typeof ApiTilesSplatRoute
@@ -188,6 +292,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/terms': {
+      id: '/terms'
+      path: '/terms'
+      fullPath: '/terms'
+      preLoaderRoute: typeof TermsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/settings': {
       id: '/settings'
       path: '/settings'
@@ -200,6 +311,13 @@ declare module '@tanstack/react-router' {
       path: '/saved'
       fullPath: '/saved'
       preLoaderRoute: typeof SavedRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/privacy': {
+      id: '/privacy'
+      path: '/privacy'
+      fullPath: '/privacy'
+      preLoaderRoute: typeof PrivacyRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/maps': {
@@ -216,6 +334,27 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof ForecastRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/disclaimer': {
+      id: '/disclaimer'
+      path: '/disclaimer'
+      fullPath: '/disclaimer'
+      preLoaderRoute: typeof DisclaimerRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/cookie-policy': {
+      id: '/cookie-policy'
+      path: '/cookie-policy'
+      fullPath: '/cookie-policy'
+      preLoaderRoute: typeof CookiePolicyRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/contact': {
+      id: '/contact'
+      path: '/contact'
+      fullPath: '/contact'
+      preLoaderRoute: typeof ContactRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/air-quality': {
       id: '/air-quality'
       path: '/air-quality'
@@ -223,11 +362,32 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof AirQualityRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/about': {
+      id: '/about'
+      path: '/about'
+      fullPath: '/about'
+      preLoaderRoute: typeof AboutRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
       fullPath: '/'
       preLoaderRoute: typeof IndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/': {
+      id: '/blog/'
+      path: '/blog'
+      fullPath: '/blog/'
+      preLoaderRoute: typeof BlogIndexRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/blog/$slug': {
+      id: '/blog/$slug'
+      path: '/blog/$slug'
+      fullPath: '/blog/$slug'
+      preLoaderRoute: typeof BlogSlugRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/api/weather/forecast': {
@@ -277,11 +437,19 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AboutRoute: AboutRoute,
   AirQualityRoute: AirQualityRoute,
+  ContactRoute: ContactRoute,
+  CookiePolicyRoute: CookiePolicyRoute,
+  DisclaimerRoute: DisclaimerRoute,
   ForecastRoute: ForecastRoute,
   MapsRoute: MapsRoute,
+  PrivacyRoute: PrivacyRoute,
   SavedRoute: SavedRoute,
   SettingsRoute: SettingsRoute,
+  TermsRoute: TermsRoute,
+  BlogSlugRoute: BlogSlugRoute,
+  BlogIndexRoute: BlogIndexRoute,
   ApiGeoReverseRoute: ApiGeoReverseRoute,
   ApiGeoSearchRoute: ApiGeoSearchRoute,
   ApiTilesSplatRoute: ApiTilesSplatRoute,

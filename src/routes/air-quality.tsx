@@ -302,6 +302,174 @@ function AQIPage() {
           </div>
         </GlassCard>
       )}
+
+      {/* Educational AQI Guide */}
+      <GlassCard className="p-6 md:p-8 space-y-6">
+        <header className="space-y-1">
+          <h2 className="text-xl font-semibold tracking-tight text-foreground">
+            Understanding Air Quality & Health
+          </h2>
+          <p className="text-xs text-muted-foreground">
+            What the index numbers mean, pollutant definitions, and how to protect yourself.
+          </p>
+        </header>
+
+        {/* AQI Category Thresholds Table */}
+        <section className="space-y-3">
+          <h3 className="text-sm font-bold uppercase tracking-[0.12em] text-primary">
+            AQI Ranges & Recommended Health Actions
+          </h3>
+          <div className="overflow-x-auto rounded-xl border border-glass-border">
+            <table className="w-full text-left text-xs border-collapse">
+              <thead>
+                <tr className="border-b border-glass-border bg-foreground/3 text-muted-foreground font-semibold">
+                  <th className="p-3">Index</th>
+                  <th className="p-3">Category</th>
+                  <th className="p-3">Health Implications</th>
+                  <th className="p-3">Recommended Actions</th>
+                </tr>
+              </thead>
+              <tbody className="divide-y divide-glass-border">
+                <tr>
+                  <td className="p-3 font-semibold text-emerald-500">1</td>
+                  <td className="p-3">
+                    <span className="rounded px-1.5 py-0.5 font-bold uppercase text-[10px] bg-emerald-500/10 text-emerald-500">
+                      Good
+                    </span>
+                  </td>
+                  <td className="p-3 text-muted-foreground">
+                    Air quality is satisfactory, and air pollution poses little or no risk.
+                  </td>
+                  <td className="p-3 text-muted-foreground">
+                    Perfect for outdoor activities. No special precautions needed.
+                  </td>
+                </tr>
+                <tr>
+                  <td className="p-3 font-semibold text-yellow-500">2</td>
+                  <td className="p-3">
+                    <span className="rounded px-1.5 py-0.5 font-bold uppercase text-[10px] bg-yellow-500/10 text-yellow-500">
+                      Fair
+                    </span>
+                  </td>
+                  <td className="p-3 text-muted-foreground">
+                    Acceptable air quality; however, there may be a moderate health concern for a
+                    very small number of unusually sensitive individuals.
+                  </td>
+                  <td className="p-3 text-muted-foreground">
+                    Sensitive groups should consider reducing prolonged or heavy outdoor exertion.
+                  </td>
+                </tr>
+                <tr>
+                  <td className="p-3 font-semibold text-orange-500">3</td>
+                  <td className="p-3">
+                    <span className="rounded px-1.5 py-0.5 font-bold uppercase text-[10px] bg-orange-500/10 text-orange-500">
+                      Moderate
+                    </span>
+                  </td>
+                  <td className="p-3 text-muted-foreground">
+                    Members of sensitive groups may experience health effects. The general public is
+                    less likely to be affected.
+                  </td>
+                  <td className="p-3 text-muted-foreground">
+                    Sensitive individuals should wear masks outdoors, close windows, and run air
+                    purifiers.
+                  </td>
+                </tr>
+                <tr>
+                  <td className="p-3 font-semibold text-red-500">4</td>
+                  <td className="p-3">
+                    <span className="rounded px-1.5 py-0.5 font-bold uppercase text-[10px] bg-red-500/10 text-red-500">
+                      Poor
+                    </span>
+                  </td>
+                  <td className="p-3 text-muted-foreground">
+                    Everyone may begin to experience health effects; members of sensitive groups may
+                    experience more serious health effects.
+                  </td>
+                  <td className="p-3 text-muted-foreground">
+                    Avoid heavy outdoor exertion. Keep windows shut. Sensitive groups should remain
+                    indoors.
+                  </td>
+                </tr>
+                <tr>
+                  <td className="p-3 font-semibold text-purple-500">5</td>
+                  <td className="p-3">
+                    <span className="rounded px-1.5 py-0.5 font-bold uppercase text-[10px] bg-purple-500/10 text-purple-500">
+                      Very Poor
+                    </span>
+                  </td>
+                  <td className="p-3 text-muted-foreground">
+                    Health alert: everyone may experience more serious health effects. Highly
+                    hazardous conditions.
+                  </td>
+                  <td className="p-3 text-muted-foreground">
+                    Everyone should avoid outdoor activities. Remain indoors, use high-efficiency
+                    air filters.
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        {/* Pollutants Descriptions */}
+        <section className="space-y-3">
+          <h3 className="text-sm font-bold uppercase tracking-[0.12em] text-primary">
+            Key Atmospheric Pollutants
+          </h3>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="p-4 rounded-xl bg-foreground/3 border border-glass-border space-y-1.5">
+              <h4 className="font-semibold text-sm text-foreground">
+                PM2.5 (Fine Particulate Matter)
+              </h4>
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                Tiny particles less than 2.5 micrometers in diameter that can penetrate deep into
+                the lungs and enter the bloodstream. Primarily originates from vehicle exhausts,
+                industrial combustion, and wood burning.
+              </p>
+            </div>
+            <div className="p-4 rounded-xl bg-foreground/3 border border-glass-border space-y-1.5">
+              <h4 className="font-semibold text-sm text-foreground">
+                PM10 (Coarse Particulate Matter)
+              </h4>
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                Particles between 2.5 and 10 micrometers in size, including dust, pollen, mold, and
+                industrial emissions. They can irritate the airways and exacerbate respiratory
+                conditions like asthma.
+              </p>
+            </div>
+            <div className="p-4 rounded-xl bg-foreground/3 border border-glass-border space-y-1.5">
+              <h4 className="font-semibold text-sm text-foreground">CO (Carbon Monoxide)</h4>
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                A colorless, odorless toxic gas produced by incomplete combustion of fossil fuels
+                (mostly motor vehicles). Reduces the oxygen-carrying capacity of the blood.
+              </p>
+            </div>
+            <div className="p-4 rounded-xl bg-foreground/3 border border-glass-border space-y-1.5">
+              <h4 className="font-semibold text-sm text-foreground">NO₂ (Nitrogen Dioxide)</h4>
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                A highly reactive gas formed from emissions from power plants and vehicles. It
+                contributes to smog formation, acid rain, and irritates human lung linings.
+              </p>
+            </div>
+            <div className="p-4 rounded-xl bg-foreground/3 border border-glass-border space-y-1.5">
+              <h4 className="font-semibold text-sm text-foreground">SO₂ (Sulfur Dioxide)</h4>
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                Emitted by power plants and smelting operations. It damages trees and plants,
+                combines with water to form acid rain, and is harmful to individuals with asthma.
+              </p>
+            </div>
+            <div className="p-4 rounded-xl bg-foreground/3 border border-glass-border space-y-1.5">
+              <h4 className="font-semibold text-sm text-foreground">O₃ (Ground-level Ozone)</h4>
+              <p className="text-xs text-muted-foreground leading-relaxed">
+                Formed by chemical reactions between oxides of nitrogen (NOx) and volatile organic
+                compounds (VOC) in the presence of sunlight. It is a key ingredient of urban smog
+                and triggers chest pain and coughing.
+              </p>
+            </div>
+          </div>
+        </section>
+      </GlassCard>
     </div>
   );
 }

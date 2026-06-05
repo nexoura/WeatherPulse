@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://weatherpulse.app/sitemap.xml
+Sitemap: https://theweatherpulse.in/sitemap.xml

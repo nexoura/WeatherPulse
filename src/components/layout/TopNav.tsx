@@ -7,6 +7,7 @@ import {
   Map as MapIcon,
   Bookmark,
   Settings as SettingsIcon,
+  BookOpen,
 } from "lucide-react";
 import { SearchCommand } from "./SearchCommand";
 import { Button } from "@/components/ui/button";
@@ -20,6 +21,7 @@ const links = [
   { to: "/maps", label: "Maps", icon: MapIcon },
   { to: "/saved", label: "Saved", icon: Bookmark },
   { to: "/settings", label: "Settings", icon: SettingsIcon },
+  { to: "/blog", label: "Blog", icon: BookOpen },
 ] as const;
 
 export function TopNav() {

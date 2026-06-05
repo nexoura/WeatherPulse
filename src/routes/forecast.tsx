@@ -18,6 +18,7 @@ import { ForecastHeaderSkeleton } from "@/components/weather/ForecastHeaderSkele
 import { aggregateDaily } from "@/utils/format";
 import { CalendarDays } from "lucide-react";
 import { AdBanner } from "@/components/ads/AdComponents";
+import { GlassCard } from "@/components/common/GlassCard";
 
 export const Route = createFileRoute("/forecast")({
   head: () => ({
@@ -118,6 +119,67 @@ function ForecastPage() {
 
       {/* ── Daily list ── */}
       <DailyList days={days} tz={tz} />
+
+      {/* Meteorological Guide */}
+      <GlassCard className="p-6 md:p-8 space-y-6">
+        <header className="space-y-1">
+          <h2 className="text-xl font-semibold tracking-tight text-foreground">
+            How to Interpret Meteorological Charts & Forecasts
+          </h2>
+          <p className="text-xs text-muted-foreground">
+            A guide to understanding temperature trends, humidity levels, wind vectors, and
+            precipitation probability.
+          </p>
+        </header>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <section className="space-y-3">
+            <h3 className="text-sm font-bold uppercase tracking-[0.12em] text-primary">
+              Temperature & Humidity Analytics
+            </h3>
+            <div className="space-y-3 text-xs text-muted-foreground leading-relaxed">
+              <p>
+                <strong>Diurnal Temperature Cycles:</strong> Under normal conditions, temperatures
+                peak in the mid-afternoon (usually around 3:00 PM to 4:00 PM local time) as solar
+                radiation accumulates, and reach their minimum shortly before sunrise when thermal
+                radiation loss from the Earth's surface peaks.
+              </p>
+              <p>
+                <strong>Humidity & Dew Point:</strong> Relative humidity measures water vapor
+                percentage relative to saturation at the current temperature. A high relative
+                humidity (above 70%) combined with high heat index restricts sweat evaporation,
+                making it feel significantly hotter than the actual ambient reading.
+              </p>
+            </div>
+          </section>
+
+          <section className="space-y-3">
+            <h3 className="text-sm font-bold uppercase tracking-[0.12em] text-primary">
+              Precipitation Probability & Wind Vectors
+            </h3>
+            <div className="space-y-3 text-xs text-muted-foreground leading-relaxed">
+              <p>
+                <strong>Precipitation Probability (PoP):</strong> Contrary to popular belief, a "40%
+                probability of rain" does not mean there is a 40% chance of rain in the sky. It is
+                mathematically defined as:
+                <span className="block font-mono bg-foreground/5 p-2 rounded-lg my-1 text-center border border-glass-border">
+                  PoP = C × A
+                </span>
+                Where <strong className="text-foreground">C</strong> is the confidence that
+                precipitation will form somewhere in the forecast area, and{" "}
+                <strong className="text-foreground">A</strong> is the percentage of the area
+                expected to receive measurable precipitation.
+              </p>
+              <p>
+                <strong>Wind Vector Analysis:</strong> Wind speeds represent the rate of air
+                movement (measured in km/h or mph). Gusts denote rapid, sudden rises in wind speed
+                lasting under 20 seconds. Direction indicators point to where the wind is blowing{" "}
+                <em>from</em> (e.g., a "North Wind" blows from North to South).
+              </p>
+            </div>
+          </section>
+        </div>
+      </GlassCard>
     </div>
   );
 }

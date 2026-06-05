@@ -190,8 +190,39 @@ function RootComponent() {
             </aside>
 
             {/* Main Content */}
-            <main className="flex-grow max-w-7xl pb-28 pt-6 md:pb-12 min-w-0">
-              <Outlet />
+            <main className="flex-grow max-w-7xl pb-28 pt-6 md:pb-12 min-w-0 flex flex-col justify-between">
+              <div>
+                <Outlet />
+              </div>
+              <footer className="mt-12 border-t border-glass-border pt-6 pb-6 text-center text-xs text-muted-foreground">
+                <div className="flex flex-wrap justify-center gap-x-6 gap-y-2 mb-4 font-medium">
+                  <Link to="/about" className="hover:text-foreground transition-colors">
+                    About Us
+                  </Link>
+                  <Link to="/contact" className="hover:text-foreground transition-colors">
+                    Contact Us
+                  </Link>
+                  <Link to="/privacy" className="hover:text-foreground transition-colors">
+                    Privacy Policy
+                  </Link>
+                  <Link to="/terms" className="hover:text-foreground transition-colors">
+                    Terms & Conditions
+                  </Link>
+                  <Link to="/disclaimer" className="hover:text-foreground transition-colors">
+                    Disclaimer
+                  </Link>
+                  <Link to="/cookie-policy" className="hover:text-foreground transition-colors">
+                    Cookie Policy
+                  </Link>
+                  <Link to="/blog" className="hover:text-foreground transition-colors">
+                    Blog
+                  </Link>
+                </div>
+                <p>
+                  © 2026 WeatherPulse. All rights reserved. Meteorological data sourced from
+                  OpenWeatherMap.
+                </p>
+              </footer>
             </main>
 
             {/* RIGHT vertical skyscraper ad — replace slot with real AdSense Ad Unit ID from AdSense Dashboard > Ads > By ad unit */}

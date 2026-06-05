@@ -348,6 +348,95 @@ function MapsPage() {
         </div>
       </GlassCard>
 
+      {/* Map Reading & Radar Guide */}
+      <GlassCard className="p-6 md:p-8 space-y-6">
+        <header className="space-y-1">
+          <h2 className="text-xl font-semibold tracking-tight text-foreground">
+            How to Read Weather Radar & Maps
+          </h2>
+          <p className="text-xs text-muted-foreground">
+            A practical guide to interpreting live atmospheric overlay layers and pressure patterns.
+          </p>
+        </header>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <section className="space-y-3">
+            <h3 className="text-sm font-bold uppercase tracking-[0.12em] text-primary">
+              Interpreting Overlay Layers
+            </h3>
+            <div className="space-y-4 text-xs text-muted-foreground">
+              <div>
+                <strong className="text-foreground text-sm font-medium block mb-1">
+                  Precipitation Radar
+                </strong>
+                <p className="leading-relaxed">
+                  Shows the intensity of liquid and frozen water in the air. Deep blue indicates
+                  light rain or drizzle (less than 0.5 mm/h), green represents moderate rainfall
+                  (around 2 mm/h), yellow to orange denotes heavy downpours (up to 10 mm/h), and
+                  deep red or purple/violet signals severe storms (25+ mm/h) or localized flash
+                  flooding risk.
+                </p>
+              </div>
+              <div>
+                <strong className="text-foreground text-sm font-medium block mb-1">
+                  Temperature Mapping
+                </strong>
+                <p className="leading-relaxed">
+                  Depicts air temperatures at a height of 2 meters. Blue/dark shades represent cold
+                  zones below freezing (less than 0°C), greens represent temperate regions (10°C to
+                  15°C), yellow to orange indicates warm sub-tropical conditions (20°C to 30°C), and
+                  bright red signals extreme heat (40°C+).
+                </p>
+              </div>
+              <div>
+                <strong className="text-foreground text-sm font-medium block mb-1">
+                  Wind & Clouds
+                </strong>
+                <p className="leading-relaxed">
+                  Cloud layers outline percentage-based sky cover, showing cloud density in
+                  grayscale. The wind speed map uses a green-to-red scale to highlight wind gust
+                  velocities (measured in m/s), indicating calm breezes, gusty drafts, or dangerous
+                  storm-level gales (40+ m/s).
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <section className="space-y-3">
+            <h3 className="text-sm font-bold uppercase tracking-[0.12em] text-primary">
+              High vs. Low Pressure Systems
+            </h3>
+            <p className="text-xs text-muted-foreground leading-relaxed">
+              Atmospheric pressure maps (measured in Hectopascals, or hPa) are key to forecasting
+              regional weather changes. Identifying pressure centers helps predict upcoming weather
+              patterns:
+            </p>
+            <div className="space-y-3 text-xs text-muted-foreground">
+              <div className="p-3.5 rounded-xl bg-sky-500/5 border border-sky-500/15">
+                <span className="font-semibold text-sky-400 block mb-1">
+                  Low-Pressure Cells (Cyclonic Areas)
+                </span>
+                <p className="leading-relaxed">
+                  Characterized by values below the standard 1013.25 hPa. Air rises in these
+                  regions, cooling and condensing into clouds. Low pressure typically brings
+                  overcast skies, wind, precipitation, and stormy or volatile weather conditions.
+                </p>
+              </div>
+              <div className="p-3.5 rounded-xl bg-orange-500/5 border border-orange-500/15">
+                <span className="font-semibold text-orange-400 block mb-1">
+                  High-Pressure Cells (Anticyclones)
+                </span>
+                <p className="leading-relaxed">
+                  Indicated by readings above 1013.25 hPa. Sinking air prevents warm air from rising
+                  and condensing. High pressure is associated with stable, calm weather, clear
+                  skies, sunshine, and minimal wind activity.
+                </p>
+              </div>
+            </div>
+          </section>
+        </div>
+      </GlassCard>
+
       <p className="text-center text-xs text-muted-foreground">
         Map data © OpenStreetMap · Tiles © CARTO · Weather overlays © OpenWeather
       </p>
