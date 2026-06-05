@@ -93,6 +93,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
+      { name: "google-site-verification", content: "uyNTWNoQ2eiTagFm5k_iGPaqwubKW1SJJyRXwih23Cg" },
     ],
     links: [
       { rel: "stylesheet", href: appCss },
@@ -103,6 +104,7 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       },
       { rel: "manifest", href: "/manifest.webmanifest" },
       { rel: "icon", href: "/favicon.svg", type: "image/svg+xml" },
+      { rel: "icon", href: "/icon-192.png", type: "image/png" },
       { rel: "apple-touch-icon", href: "/icon-192.png" },
     ],
     scripts: [
