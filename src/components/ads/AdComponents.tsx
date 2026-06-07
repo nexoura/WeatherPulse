@@ -44,7 +44,7 @@ export function AdBanner({ slot }: { slot: string }) {
           key={slot}
           className="adsbygoogle"
           style={{ display: "block", minHeight: "90px", width: "100%" }}
-          data-ad-client="ca-pub-7862756622314744"
+          data-ad-client="ca-pub-3663691272659638"
           data-ad-slot={slot}
           data-ad-format="auto"
           data-full-width-responsive="true"
@@ -83,7 +83,7 @@ export function AdVertical({ slot }: { slot: string }) {
           key={slot}
           className="adsbygoogle"
           style={{ display: "inline-block", width: "160px", height: "600px" }}
-          data-ad-client="ca-pub-7862756622314744"
+          data-ad-client="ca-pub-3663691272659638"
           data-ad-slot={slot}
         />
       ) : (
